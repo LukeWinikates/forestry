@@ -3,12 +3,15 @@
   <div ng-controller="ParksListCtrl">
     <marquee ng-if="!parks.$resolved"
     style="width: 40px; border: 1px solid black">
-      ...
+    ...
     </marquee>
-    <ul>
-      <li ng-repeat="park in parks">
+    <div ng-if="parks.$resolved">
+      <input ng-model="filterText">
+      <ul>
+        <li ng-repeat="park in parks | filter:filterText | orderBy:alphaSortValue">
         {{park}}
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -20,6 +20,9 @@ var parksApp = angular.module('parksApp', ['parkServices']);
 
 parksApp.controller('ParksListCtrl', ['$scope', 'Parks', function ($scope, Parks) {
     $scope.parks = Parks.query();
+    $scope.alphaSortValue = function(name) {
+      return name.replace(/[Tt]he\s+/, '');
+    }
 }]);
 
 var parkServices = angular.module('parkServices', ['ngResource']);
