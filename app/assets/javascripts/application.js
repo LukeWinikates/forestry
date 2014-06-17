@@ -13,14 +13,27 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
+//= require angular-resource
 //= require_tree .
 
-var parksApp = angular.module('parksApp', []);
+var parksApp = angular.module('parksApp', ['parkServices']);
 
-parksApp.controller('ParksListCtrl', function($scope){
-   $scope.parks = [
-       "First",
-       "Second",
-       "Last"
-   ];
-});
+parksApp.controller('ParksListCtrl', ['$scope', 'Parks', function ($scope, Parks) {
+    $scope.parks = Parks.query();
+}]);
+
+var parkServices = angular.module('parkServices', ['ngResource']);
+
+parkServices.factory('Parks', ['$resource',
+    function ($resource) {
+        return $resource('parks/:parkId', {}, {
+            query: {
+                method: 'GET',
+                isArray: true,
+                transformResponse: function (data) {
+                    return JSON.parse(data).parks;
+                }
+            }
+        });
+    }
+]);

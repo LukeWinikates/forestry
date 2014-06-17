@@ -1,8 +1,14 @@
 <div>
   <h1>Parks</h1>
-  <ul ng-controller="ParksListCtrl">
-    <li ng-repeat="park in parks">
-      {{park}}
-    </li>
-  </ul>
+  <div ng-controller="ParksListCtrl">
+    <marquee ng-if="!parks.$resolved"
+    style="width: 40px; border: 1px solid black">
+      ...
+    </marquee>
+    <ul>
+      <li ng-repeat="park in parks">
+        {{park}}
+      </li>
+    </ul>
+  </div>
 </div>

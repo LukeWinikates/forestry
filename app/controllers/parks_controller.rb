@@ -10,7 +10,7 @@ class ParksController < ApplicationController
 
     response = conn.get 'webservices/RIDBServiceNG.cfc', {:method => 'getAllRecElementsForOrgID', :orgID => NATIONAL_REGISTER_OF_HISTORIC_PLACES}
     doc = Nokogiri::XML(response.body)
-    parks = doc.xpath("//arc:FacilityName").map(&:text)
+    parks = doc.xpath('//arc:FacilityName').map(&:text)
     render json: parks
   end
 end
