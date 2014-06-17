@@ -16,3 +16,11 @@
 //= require_tree .
 
 var parksApp = angular.module('parksApp', []);
+
+parksApp.controller('ParksListCtrl', function($scope){
+   $scope.parks = [
+       "First",
+       "Second",
+       "Last"
+   ];
+});
