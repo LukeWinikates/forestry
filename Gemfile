@@ -27,6 +27,11 @@ gem 'faraday'
 gem 'nokogiri'
 gem 'pry'
 
+
+group :development, :test do
+  gem 'jasmine'
+end
+
 group :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'ruby-jmeter'
