@@ -26,7 +26,10 @@ parksApp.controller('ParksListCtrl', ['$scope', 'Parks', function ($scope, Parks
 }]);
 
 parksApp.controller('SignupsCtrl', function($scope){
-  $scope.save = function() {}
+  $scope.user = {};
+  $scope.save = function() {
+    alert("welcome, "+ $scope.user.name);
+  }
 });
 
 var parkServices = angular.module('parkServices', ['ngResource']);
